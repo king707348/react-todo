@@ -2,6 +2,10 @@
 
 This is a simple Todo application built with Next.js and React.
 
+## Screenshot
+
+![Demo Screenshot](/demo.png)
+
 ## Features
 
 *   Add new tasks

@@ -27,12 +27,12 @@ export default function EditToggle({item, setEvtList, showKey}: ChildProps) {
         { item.isEdit ?
             <Input 
                 type={setType} 
-                className="max-w-44 text-sm h-6" 
+                className="max-w-44 text-sm h-6 mb-2" 
                 placeholder={showKey == "location" ? "location" : "Type your task here?" }
                 value={item[showKey]}
                 onChange={(e) => EditContent(item.id, e.target.value)}
             />
-        : <div>{item[showKey]}</div>
+        : <div className="mb-2">{item[showKey]}</div>
         }
     </>)
 }
