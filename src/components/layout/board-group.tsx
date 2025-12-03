@@ -2,7 +2,6 @@
 
 import { Plus } from 'lucide-react';
 
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -71,7 +70,7 @@ export default function UseBoardGroup() {
   }, [evtList])
 
   return (
-    <div className="border rounded-md p-4 max-w-lg w-full">
+    <div className="border rounded-md p-4 max-w-lg w-full m-auto">
         <div className="flex mb-4">
             <h2 className="my-auto mr-2">what schedule do you want to do?</h2>
             <Tooltip>
