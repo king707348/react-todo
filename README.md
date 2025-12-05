@@ -1,38 +1,28 @@
-# React Todo App
+React Todo (react-todo)
+雙語說明：這是一個使用 Next.js + React 打造的待辦事項（Todo）範例應用，內含簡單的佈局、主題切換與可重用 UI 元件。
 
-This is a simple Todo application built with Next.js and React.
+Brief (EN): A small Next.js Todo app example with theme support and reusable UI components.
 
-## Screenshot
+主要特色
 
-![Demo Screenshot](/public/demo.png)
+簡單的 Todo 功能：新增、編輯、切換完成狀態（以組件化方式實作）。
+主題支援：使用 next-themes 提供深色/淺色主題切換。
+Radix UI & ShadCN 風格元件：Radix 的 Tooltip / Slot 等小工具，以及可重用的 UI component（src/components）。
+技術棧
 
-## Features
+Next.js 16
+React 19
+TypeScript
+Tailwind CSS 4
+Radix UI
+next-themes
+--
 
-*   Add new tasks
-*   Delete tasks
-*   Light and Dark theme toggle
-
-## Tech Stack
-
-*   [Next.js](https://nextjs.org/) - React framework for production
-*   [React](https://reactjs.org/) - A JavaScript library for building user interfaces
-*   [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript at Any Scale
-*   [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
-*   [Radix UI](https://www.radix-ui.com/) - For accessible UI components
-*   [Lucide React](https://lucide.dev/) - For icons
-*   [next-themes](https://github.com/pacocoursey/next-themes) - For theming
-
-## Getting Started
-
-First, install the dependencies:
-
-```bash
+快速開始（Windows / PowerShell）
+先安裝相依套件：
 npm install
-```
 
-Then, run the development server:
-
-```bash
+啟動開發伺服器（專案預設使用 port 3001）：
 npm run dev
 ```
 
