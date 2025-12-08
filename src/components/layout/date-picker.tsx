@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, Dispatch, SetStateAction } from "react"
+import { useState, Dispatch, SetStateAction, useEffect } from "react"
 import { ChevronDownIcon } from 'lucide-react';
 
 import { Calendar } from "@/components/ui/calendar"
@@ -21,13 +21,30 @@ export interface EventData {
 
 interface ChildProps {
   item: EventData,
-  itemType: keyof EventData,
   setEvtList: Dispatch<SetStateAction<EventData[]>>
 }
 
-export default function Calendar22({item, itemType, setEvtList}: ChildProps) {
+export default function Calendar22({item, setEvtList}: ChildProps) {
   const [open, setOpen] = useState(false)
   const [date, setDate] = useState<Date | undefined>(undefined)
+
+  const defaultDate = item.date ? item.date : "Select date"
+  
+  const Selected = (date: Date) => {
+    setOpen(false)  
+    setDate(date)
+
+    setEvtList(prev => prev.map(setItem => {
+      if(setItem.id == item.id){
+        return {
+          ...setItem,
+          date: date.toLocaleDateString()
+        }
+      }
+
+      return setItem
+    }))
+  }
 
   return (
     <div className="flex flex-col gap-3">
@@ -38,33 +55,18 @@ export default function Calendar22({item, itemType, setEvtList}: ChildProps) {
             id="date"
             className="w-44 h-6 text-sm justify-between"
           >
-            {date ? date.toLocaleDateString() : "Select date"}
+            {defaultDate}
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto overflow-hidden p-0" align="start">
           <Calendar
             mode="single"
+            defaultMonth={date}
             selected={date}
+            onSelect={Selected}
+            required={true}
             captionLayout="dropdown"
-            onSelect={(date) => {
-              setOpen(false)  
-              setDate(date)
-    
-              console.log(itemType, item )
-
-              setEvtList(prev => prev.map(setItem => {
-                console.log(setItem.id, item.id)
-                if(setItem.id == item.id){
-                  return {
-                    ...item,
-                    date: date.toLocaleDateString()
-                  }
-                }
-
-                return setItem
-              }))
-            }}
           />
         </PopoverContent>
       </Popover>

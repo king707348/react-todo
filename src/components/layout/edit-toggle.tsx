@@ -38,7 +38,6 @@ export default function EditToggle({item, setEvtList, showKey}: ChildProps) {
             setType == "date" ?
             <Calendar22 
                 item={item}
-                itemType={setType}
                 setEvtList={setEvtList}
             />
             :<Input 
