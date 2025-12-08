@@ -1,11 +1,22 @@
 "use client"
 
+import { Dispatch, SetStateAction } from "react"
 import { Input } from "@/components/ui/input"
 
+import Calendar22 from "@/components/layout/date-picker"
+
+export interface EventData {
+    id: number;
+    title: string;
+    location: string;
+    date: string;
+    isEdit: boolean;
+}
+
 interface ChildProps {
-    item: EventData[],
-    setEvtList: React.Dispatch<React.SetStateAction<EventData[]>>,
-    showKey: string
+    item: EventData,
+    setEvtList: Dispatch<SetStateAction<EventData[]>>,
+    showKey: keyof EventData
 }
 
 export default function EditToggle({item, setEvtList, showKey}: ChildProps) {
@@ -16,23 +27,31 @@ export default function EditToggle({item, setEvtList, showKey}: ChildProps) {
             if(item.id === id){
                 return {
                     ...item,
-                    [showKey as keyof EventData]: newString
+                    [showKey]: newString
                 }
             }
-
             return item
         }))
     }
     return (<>
         { item.isEdit ?
-            <Input 
+            setType == "date" ?
+            <Calendar22 
+                item={item}
+                itemType={setType}
+                setEvtList={setEvtList}
+            />
+            :<Input 
                 type={setType} 
                 className="max-w-44 text-sm h-6 mb-2" 
                 placeholder={showKey == "location" ? "location" : "Type your task here?" }
-                value={item[showKey]}
+                value={item[showKey] as string}
                 onChange={(e) => EditContent(item.id, e.target.value)}
             />
-        : <div className="mb-2">{item[showKey]}</div>
+            :<div className={item[showKey] !== "" ? "mb-2" : ""}>
+                {showKey !== "title" ? item[showKey] : item[showKey] ? item[showKey] : "New Card"}
+            </div>
+            
         }
     </>)
 }

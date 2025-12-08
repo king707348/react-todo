@@ -58,4 +58,16 @@ function TooltipContent({
   )
 }
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+function TooltipArrow({
+  className,
+  ...props 
+}: React.ComponentProps<typeof TooltipPrimitive.Arrow>) { 
+  return (
+    <TooltipPrimitive.Arrow 
+      className={cn("fill-popover", className)} 
+      {...props} 
+    />
+  )
+}
+
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider, TooltipArrow }
