@@ -1,17 +1,14 @@
 "use client"
 
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 import { Plus, SquarePen, Trash2 } from 'lucide-react';
+
+import { DndContext } from '@dnd-kit/core';
 
 import { Button } from "@/components/ui/button"
 import {
   Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+  CardContent
 } from "@/components/ui/card"
 import {
   Tooltip,
@@ -102,7 +99,7 @@ export default function UseBoardGroup() {
                 </TooltipContent>
             </Tooltip>
         </div>
-        <div>
+        <DndContext>
             {evtList.map((item, idx) => {
                 return <Card key={idx} className="w-full max-w-md p-2 mt-4 border border-2">
                     <CardContent className="flex justify-between px-0">
@@ -142,7 +139,7 @@ export default function UseBoardGroup() {
                     </CardContent>
                 </Card>
             })}
-        </div>
+        </DndContext>
         <Tooltip>
             <TooltipTrigger asChild>
                 <Button onClick={AddNewCard} className="mt-2 p-2 cursor-pointer">
