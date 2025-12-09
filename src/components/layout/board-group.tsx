@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Plus, SquarePen, Trash2 } from 'lucide-react';
 
-import { DndContext } from '@dnd-kit/core';
+import { DndContext, useDroppable, useDraggable } from '@dnd-kit/core';
 
 import { Button } from "@/components/ui/button"
 import {
@@ -139,6 +139,8 @@ export default function UseBoardGroup() {
                     </CardContent>
                 </Card>
             })}
+
+            
         </DndContext>
         <Tooltip>
             <TooltipTrigger asChild>
